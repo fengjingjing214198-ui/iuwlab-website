@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Restore a route encoded by public/404.html before React Router starts.
+      (function (location) {
+        if (location.search[1] === "/") {
+          const parts = location.search
+            .slice(1)
+            .split("&")
+            .map((part) => part.replace(/~and~/g, "&"));
+          window.history.replaceState(
+            null,
+            "",
+            location.pathname.slice(0, -1) +
+              parts[0] +
+              (parts.length > 1 ? `?${parts.slice(1).join("&")}` : "") +
+              location.hash,
+          );
+        }
+      })(window.location);
+    </script>
+    <title>清华大学智能水系统实验室 IUWLab — 城市与流域水系统智能管理</title>
+    <meta name="description" content="清华大学环境学院智能水系统实验室（IUWLab），由董欣副教授领导，围绕城市与流域水系统的科学评估、空间优化与智能控制开展跨学科研究，构建水资源智能管理新范式。" />
+    <meta name="keywords" content="清华大学智能水系统实验室,IUWLab,城市水系统,排水系统智能控制,水资源空间优化,董欣,环境学院" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="清华大学智能水系统实验室 IUWLab" />
+    <meta property="og:description" content="围绕城市与流域水系统的科学评估、空间优化与智能控制开展跨学科研究。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

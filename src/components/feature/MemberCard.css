@@ -1,0 +1,47 @@
+/* Member photo head halo — same light treatment as the PI card, per tone family */
+
+.member-photo-halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.member-photo-halo--primary {
+  background: radial-gradient(
+    108% 86% at 50% 30%,
+    oklch(var(--primary-300) / 0.62) 0%,
+    oklch(var(--primary-200) / 0.40) 42%,
+    oklch(var(--primary-100) / 0.16) 68%,
+    transparent 88%
+  );
+}
+
+.member-photo-halo--accent {
+  background: radial-gradient(
+    108% 86% at 50% 30%,
+    oklch(var(--accent-300) / 0.62) 0%,
+    oklch(var(--accent-200) / 0.40) 42%,
+    oklch(var(--accent-100) / 0.16) 68%,
+    transparent 88%
+  );
+}
+
+.member-photo-halo--secondary {
+  background: radial-gradient(
+    108% 86% at 50% 30%,
+    oklch(var(--secondary-300) / 0.62) 0%,
+    oklch(var(--secondary-200) / 0.40) 42%,
+    oklch(var(--secondary-100) / 0.16) 68%,
+    transparent 88%
+  );
+}
+
+.member-photo-halo--ink {
+  background: radial-gradient(
+    108% 86% at 50% 30%,
+    oklch(var(--foreground-300) / 0.62) 0%,
+    oklch(var(--foreground-200) / 0.40) 42%,
+    oklch(var(--foreground-100) / 0.16) 68%,
+    transparent 88%
+  );
+}

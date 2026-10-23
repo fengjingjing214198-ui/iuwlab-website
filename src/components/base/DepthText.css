@@ -1,0 +1,40 @@
+.depth-text {
+  display: inline-block;
+  perspective-origin: 50% 50%;
+}
+
+.depth-text__inner {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.depth-text__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1.05;
+  transform-style: preserve-3d;
+  will-change: transform;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* The face layer sits in normal flow and defines the block's size */
+.depth-text__layer--face {
+  position: relative;
+}
+
+.depth-text__line {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-text__inner {
+    will-change: auto;
+  }
+}

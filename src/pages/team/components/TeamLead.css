@@ -1,0 +1,77 @@
+/* PI domain-tag sheen — a faint violet light slowly sweeps around each pill border */
+
+@property --pi-tag-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pi-tag-sheen {
+  position: relative;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease,
+    background-color 320ms ease;
+  will-change: transform;
+}
+
+.pi-tag-sheen:hover {
+  transform: translateY(-2px);
+  border-color: oklch(var(--primary-200));
+  background-color: oklch(var(--primary-100));
+}
+
+.pi-tag-sheen::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--pi-tag-angle, 0deg),
+    transparent 0deg,
+    transparent 294deg,
+    oklch(var(--accent-300) / 0.45) 330deg,
+    oklch(var(--primary-200) / 0.28) 348deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: pi-tag-sheen-spin 7s linear infinite;
+  animation-delay: var(--pi-tag-delay, 0s);
+  pointer-events: none;
+}
+
+@keyframes pi-tag-sheen-spin {
+  to {
+    --pi-tag-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pi-tag-sheen::after {
+    animation: none;
+  }
+
+  .pi-tag-sheen {
+    transition: border-color 320ms ease, background-color 320ms ease;
+  }
+
+  .pi-tag-sheen:hover {
+    transform: none;
+  }
+}
+
+/* PI photo backdrop — soft radial halo that fades into the card background */
+.pi-photo-backdrop {
+  background:
+    radial-gradient(
+      104% 84% at 50% 32%,
+      oklch(var(--primary-300) / 0.74) 0%,
+      oklch(var(--primary-200) / 0.46) 42%,
+      oklch(var(--primary-100) / 0.18) 68%,
+      transparent 88%
+    );
+}

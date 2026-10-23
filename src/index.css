@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------
+   StyleSystem tokens — "Corporate Trust"
+   Indigo (primary) + Violet (accent) + cool slate neutrals.
+   Stored as OKLCH channel triplets (no oklch() wrapper).
+   -------------------------------------------------- */
+:root {
+  /* background — cool slate canvas / layers / panels */
+  --background-50: 0.985 0.003 247;
+  --background-100: 0.972 0.006 247;
+  --background-200: 0.930 0.013 255;
+  --background-300: 0.888 0.017 253;
+  --background-400: 0.820 0.021 252;
+  --background-500: 0.730 0.026 252;
+  --background-600: 0.610 0.030 253;
+  --background-700: 0.500 0.033 255;
+  --background-800: 0.400 0.036 258;
+  --background-900: 0.310 0.038 260;
+  --background-950: 0.208 0.042 265;
+
+  /* foreground — text / strongest neutral contrast */
+  --foreground-50: 0.985 0.003 247;
+  --foreground-100: 0.968 0.007 248;
+  --foreground-200: 0.929 0.013 255;
+  --foreground-300: 0.869 0.022 253;
+  --foreground-400: 0.704 0.040 257;
+  --foreground-500: 0.554 0.046 257;
+  --foreground-600: 0.446 0.043 257;
+  --foreground-700: 0.372 0.044 257;
+  --foreground-800: 0.279 0.041 260;
+  --foreground-900: 0.208 0.042 266;
+  --foreground-950: 0.129 0.042 265;
+
+  /* primary — indigo, the brand + conversion color */
+  --primary-50: 0.962 0.018 272;
+  --primary-100: 0.930 0.034 272;
+  --primary-200: 0.870 0.062 274;
+  --primary-300: 0.785 0.100 274;
+  --primary-400: 0.673 0.160 276;
+  --primary-500: 0.585 0.204 277;
+  --primary-600: 0.510 0.229 277;
+  --primary-700: 0.457 0.220 277;
+  --primary-800: 0.398 0.190 277;
+  --primary-900: 0.359 0.150 277;
+  --primary-950: 0.257 0.090 280;
+
+  /* accent — violet, the second theme + highlight color */
+  --accent-50: 0.969 0.017 293;
+  --accent-100: 0.943 0.030 294;
+  --accent-200: 0.894 0.057 293;
+  --accent-300: 0.811 0.111 293;
+  --accent-400: 0.702 0.183 293;
+  --accent-500: 0.606 0.250 292;
+  --accent-600: 0.541 0.281 293;
+  --accent-700: 0.491 0.270 292;
+  --accent-800: 0.432 0.232 292;
+  --accent-900: 0.380 0.189 293;
+  --accent-950: 0.283 0.141 291;
+
+  /* secondary — soft steel / periwinkle, quiet supporting UI */
+  --secondary-50: 0.972 0.010 250;
+  --secondary-100: 0.948 0.020 252;
+  --secondary-200: 0.905 0.034 253;
+  --secondary-300: 0.838 0.052 254;
+  --secondary-400: 0.748 0.070 255;
+  --secondary-500: 0.652 0.086 256;
+  --secondary-600: 0.560 0.084 257;
+  --secondary-700: 0.472 0.078 258;
+  --secondary-800: 0.388 0.070 259;
+  --secondary-900: 0.322 0.060 260;
+  --secondary-950: 0.236 0.050 261;
+}
+
+/* Hidden anti-bot honeypot field — invisible to humans, accessible to bots only */
+.readdy-anti-bot {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* --------------------------------------------------
+   Topography 3D background
+   -------------------------------------------------- */
+.topography-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------
+   Site-wide animations & interactive flourishes
+   -------------------------------------------------- */
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hero-pan {
+  0% {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+  50% {
+    transform: scale(1.12) translate(1.5%, 1%);
+  }
+  100% {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+}
+
+.hero-pan {
+  animation: hero-pan 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scroll-hint-line {
+  animation: scroll-hint 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 350ms ease-out both;
+}
+
+/* Cursor spotlight: gentle breathing so the water surface stays alive at rest */
+@keyframes spotlight-breath {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.spotlight-breath {
+  animation: spotlight-breath 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-breath {
+    animation: none;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: oklch(var(--primary-500));
+  color: oklch(var(--background-50));
+}
+
+/* Subtle smooth scrolling site-wide */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography: Apple-style system font stack (SF Pro on Apple devices, PingFang SC for Chinese) */
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  --font-label: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: oklch(var(--background-50));
+}
+
+/* Typography: slightly tighter tracking for a steadier, calmer feel */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  background-color: oklch(var(--background-50));
+  color: oklch(var(--foreground-950));
+}

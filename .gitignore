@@ -1,0 +1,5 @@
+node_modules/
+out/
+auto-imports.d.ts
+*.local
+.DS_Store

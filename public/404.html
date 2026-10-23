@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages serves this file for an unknown URL. Re-encode the
+      // requested route so index.html can restore it before React starts.
+      (function (location) {
+        const knownRootRoutes = [
+          "news",
+          "research",
+          "achievements",
+          "projects",
+          "software",
+          "team",
+          "join",
+        ];
+        const segments = location.pathname.split("/").filter(Boolean);
+        const isRootSite = knownRootRoutes.includes(segments[0]);
+        const base = isRootSite ? "" : segments[0] ? `/${segments[0]}` : "";
+        const route = `/${segments.slice(isRootSite ? 0 : 1).join("/")}`;
+        const query = location.search
+          ? `&${location.search.slice(1).replace(/&/g, "~and~")}`
+          : "";
+
+        location.replace(
+          `${location.protocol}//${location.host}${base}/?${route.replace(/&/g, "~and~")}${query}${location.hash}`,
+        );
+      })(window.location);
+    </script>
+  </head>
+  <body></body>
+</html>
